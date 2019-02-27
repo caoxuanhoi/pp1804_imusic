@@ -1,6 +1,8 @@
 
 @extends('frontend.trangchu')
+
 @section('content')
+
 <!-- //header-ends -->
 <div id="page-wrapper">
     <div class="inner-content">
@@ -69,23 +71,7 @@
             <!--//End-banner-->
             <!--albums-->
             <!-- pop-up-box --> 
-            <link href="source/css/popuo-box.css" rel="stylesheet" type="text/css" media="all">
-            <script src="source/js/jquery.magnific-popup.js" type="text/javascript"></script>
-            <script>
-                $(document).ready(function() {
-                $('.popup-with-zoom-anim').magnificPopup({
-                    type: 'inline',
-                    fixedContentPos: false,
-                    fixedBgPos: true,
-                    overflowY: 'auto',
-                    closeBtnInside: true,
-                    preloader: false,
-                    midClick: true,
-                    removalDelay: 300,
-                    mainClass: 'my-mfp-zoom-in'
-                });
-                });
-            </script>		
+            <link href="source/css/popuo-box.css" rel="stylesheet" type="text/css" media="all">	
             <!--//pop-up-box -->
             <div class="albums">
                 <div class="tittle-head">
@@ -96,12 +82,15 @@
                     <div class="clearfix"> </div>
                 </div>
                 @foreach($songs as $song)
-                <div class="col-md-3 content-grid">
-                    @foreach($song->artists as $artist)
-                    <a class="play-icon popup-with-zoom-anim" href="{{ route('single', '$song->id')}} "><img src="{{ $artist->image }}" title="allbum-name"></a>
-                    @endforeach
-                    <a class="button play-icon popup-with-zoom-anim" href="{{ route('trang-chu', '$song->id')}} ">{{ $song->name }}</a>
-                </div>
+                    <div class="col-md-3 content-grid">
+                        @foreach($song->artists as $artist)
+                            <a class="popup-with-zoom-anim" href="{{ $song->path }}"><img src="{{ $artist->image }}"></a>
+                        @endforeach
+                        <a class="button popup-with-zoom-anim" href="javascript:void(0)" data-link="{{ $song->path }}">{{ $song->name }}</a>
+                        <audio controls="controls">
+                            <source src="{{ $song->path }}" type="audio/mp3" />
+                        </audio>
+                    </div>
                 @endforeach
                 <div class="clearfix"> </div>
                 {{ $songs->links() }}
@@ -157,10 +146,12 @@
         </div>
         @foreach($artists as $artist)
         <div class="col-md-3 content-grid">
-            <a class="image-artists" href="{{ route('single', '$song->id')}} ">
+            <a class="image-artists" href="{{ route('single', $song->id)}} ">
                 <img src="{{ $artist->image }}" title="allbum-name">
             </a>
-            <a class="button play-icon popup-with-zoom-anim" href="{{ route('trang-chu', '$song->id')}} ">{{ $artist->artist_name }}</a>
+            <div>
+            <a class="button popup-with-zoom-anim" href="{{ route('single', $song->id)}} ">{{ $artist->artist_name }}</a>
+            </div>
         </div>
         @endforeach
         <div class="clearfix"> </div>

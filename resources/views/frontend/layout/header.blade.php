@@ -18,39 +18,14 @@
     <!---->
     <div class="col-md-4 player">
         <div class="audio-player">
-            <audio id="audio-player"  controls="controls">
-                <source src="media/Blue Browne.ogg" type="audio/ogg"></source>
-                <source src="media/Blue Browne.mp3" type="audio/mpeg"></source>
-                <source src="media/Georgia.ogg" type="audio/ogg"></source>
-                <source src="media/Georgia.mp3" type="audio/mpeg"></source>
+            <audio controls="controls">
+                <source src="{{ $song->path }}" type="audio/mp3" />
             </audio>
         </div>
-        <!---->
-        <script type="text/javascript">
-            $(function(){
-                $('#audio-player').mediaelementplayer({
-                alwaysShowControls: true,
-                features: ['playpause','progress','volume'],
-                audioVolume: 'horizontal',
-                iPadUseNativeControls: true,
-                iPhoneUseNativeControls: true,
-                AndroidUseNativeControls: true
-            });
-            });
-        </script>
-        <!--audio-->
-        <link rel="stylesheet" type="text/  " media="all" href="source/css/audio.css">
-        <script type="text/javascript" src="source/js/mediaelement-and-player.min.js"></script>
-        <!---->
-        <!--//-->
-        <ul class="next-top">
-            <li><a class="ar" href="#"> <img src="source/image/arrow.png" alt=""/></a></li>
-            <li><a class="ar2" href="#"><img src="source/image/arrow2.png" alt=""/></i></a></li>
-        </ul>
     </div>
     <div class="col-md-4 login-pop">
         <div id="loginpop">
-            <a href="#" id="loginButton"><span>Login <i class="arrow glyphicon glyphicon-chevron-right"></i></span></a><a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"><img src="source/image/user.png" /></a>
+            <a href="#" id="loginButton"><span>Login </span></a><a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"><img src="source/image/user.png" /></a>
             <div id="loginBox">
                 <form action="#" method="post" id="loginForm">
                     <fieldset id="body">

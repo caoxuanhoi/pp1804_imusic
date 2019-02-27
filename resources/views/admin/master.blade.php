@@ -11,6 +11,7 @@
         <link href="{{ asset('bower_components/sb-admin/app/styles/sb-admin-2.css') }}" rel='stylesheet' type='text/css' />
         <link href="{{ asset('bower_components/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('bower_components/metisMenu/dist/metisMenu.css') }}" type='text/css' />
+        <link href="{{ asset('css/my-style.css') }}" rel='stylesheet' type='text/css' />
         @yield('style')
     </head>
     <body>
