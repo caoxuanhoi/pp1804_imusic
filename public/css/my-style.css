@@ -3,3 +3,8 @@
     list-style: none;
     list-style-type: none !important;
 }
+
+.content-grid img{
+    height: 200px;
+    display: block !important; 
+}

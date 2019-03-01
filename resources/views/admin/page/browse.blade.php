@@ -18,11 +18,11 @@
                 <div class="clearfix"> </div>
             </div>
             @foreach($songs as $song)
-            <div class="col-md-3 browse-grid">
+            <div class="col-md-3 content-grid">
                 @foreach($song->artists as $artist)
-                <a  href="{{ route('single', '$song->id')}} "><img src="{{ $artist->image}}" title="allbum-name"></a>
+                <a  href="{{ route('single', $song->id)}} "><img src="{{ $artist->image}}" title="allbum-name"></a>
                 @endforeach
-                <a href="{{ route('single', '$song->id')}} "></a>
+                <a href="{{ route('single', $song->id)}} "></a>
                 <a class="sing" href="{{ route('single', '$song->id')}} ">{{$song->name}}</a>
             </div>
             @endforeach

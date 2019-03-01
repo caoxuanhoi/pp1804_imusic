@@ -17,15 +17,21 @@
     <!-- //search-scripts -->
     <!---->
     <div class="col-md-4 player">
+
         <div class="audio-player">
-            <audio controls="controls">
-                <source src="{{ $song->path }}" type="audio/mp3" />
-            </audio>
+
+        <audio id="head_music" controls="controls" preload="auto">
+<i>Your browser does not support the audio element.</i>
+</audio>
+
+            <!-- <audio controls="controls">
+                <source  id="head_music" src="" type="audio/mp3" />
+            </audio> -->
         </div>
     </div>
     <div class="col-md-4 login-pop">
         <div id="loginpop">
-            <a href="#" id="loginButton"><span>Login </span></a><a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"><img src="source/image/user.png" /></a>
+            <a href="{{ route('login') }}" id="loginButton"><span>Login </span></a><a class="top-sign" href="{{ route('register') }}" data-toggle="modal" data-target="#myModal5"><img src="source/image/user.png" /></a>
             <div id="loginBox">
                 <form action="#" method="post" id="loginForm">
                     <fieldset id="body">

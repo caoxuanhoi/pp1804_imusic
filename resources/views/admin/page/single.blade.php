@@ -2,6 +2,7 @@
 @extends('frontend.trangchu')
 @section('content')
 <!-- //header-ends -->
+
 <div id="page-wrapper">
 <div class="inner-content single">
 <!--/music-right-->
@@ -38,23 +39,38 @@
     <link href="css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="source/js/jquery.jplayer.min.js"></script>
     <script type="text/javascript" src="source/js/jplayer.playlist.min.js"></script>
-    <script type="text/javascript">       
+    <script type="text/javascript">  
+         
     </script>
     <!-- //script for play-list -->
     <!--//video-main-->
     <!-- /agileinfo -->
 </div>
-
+@foreach($musics as $music)
+    <div class="jp-playlist">
+                <ul style="display: block;">
+                    <li class="jp-playlist-current">
+                        <div>
+                            <a id="song{{ $music->id }}" onclick="song({{ $music->id }})" data-url="{{ $music->path }}" href="javascript:;" class="jp-playlist-item jp-playlist-current" tabindex="0">{{ $serial = $serial + 1 }}.{{$music->name}}
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+    </div>
+@endforeach
 <div class="response">
     
-    <h4>Responses</h4>
+    <h4>Description</h4>
+    
     @foreach($artists as $artist)
-    <div class="media response-info">
+    <div class="col-md-3 content-grid">
         <div class="media-left response-text-left">
-            <a href="{{ route('single','$artist->id')}} ">
-            <img class="media-object" src=" {{$artist->image}} ">
+            <a href="{{ route('single',$artist->id)}} ">
+            <div class="col-md-3 content-grid">
+                <img src=" {{ $artist->image }} ">
+            </div>  
             </a>
-            <h5><a href="{{ route('single','$artist->id')}} ">{{$artist->artist_name}}</a></h5>
+            <h5><a href="{{ route('single',$artist->id )}} ">{{$artist->artist_name}}</a></h5>
         </div>
         <div class="media-body response-text-right">
             <p>{{$artist->description}}</p>
@@ -66,9 +82,11 @@
     </div>
    @endforeach
 </div>
+
 <!-- /agileits -->
 <div class="clearfix"> </div>
+{{ $artists->links() }}
 <!--//music-right-->
-<div class="coment-form">
->
+<div class="coment-form"> </div>
+
 @endsection

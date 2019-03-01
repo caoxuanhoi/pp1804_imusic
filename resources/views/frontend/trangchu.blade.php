@@ -141,5 +141,6 @@
 		<script src="source/js/scripts.js"></script>
 		<script type="text/javascript" src="source/js/mediaelement-and-player.min.js"></script> -->
 		<script src="source/js/bootstrap.js"></script>
+		<script src="js/audio.js"></script>
 	</body>
 </html>

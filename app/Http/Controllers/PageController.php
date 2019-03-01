@@ -14,15 +14,10 @@ class pageController extends Controller
         $songs = Music::with('artists')->orderBy('updated_at', 'DESC')->paginate(config('custom.paginate_8'));
         $charts = Music::with('artists')->orderBy('view_count', 'DESC')->paginate(config('custom.paginate_8'));
         $albums = Album::all();
-        $artists = Artist::all();
+        $artists = Artist::with('musics')->orderBy('updated_at', 'DESC')->paginate(config('custom.paginate_8'));
         $serial = 0;
 
         return view('admin.page.index', compact('songs', 'albums', 'artists', 'charts', 'serial'));
-    }
-
-    public function getBlog()
-    {
-        return view('admin.page.blog');
     }
 
     public function getBrowse()
@@ -33,14 +28,9 @@ class pageController extends Controller
         return view('admin.page.browse', compact('songs', 'albums'));
     }
 
-    public function getContact()
-    {
-        return view('admin.page.contact');
-    }
-
     public function getRadio()
     {
-        $songs = Music::all();
+        $songs = Music::with('artists')->orderBy('updated_at', 'DESC')->paginate(config('custom.paginate_8'));
         $albums = Album::all();
         $artists = Artist::all();
 
@@ -49,14 +39,12 @@ class pageController extends Controller
 
     public function getSingle($id)
     {
-        $artists = Artist::all();
+        $musics = Music::with('artists')->orderBy('updated_at', 'DESC')->paginate(config('custom.paginate_8'));
+        $artists = Artist::with('musics')->orderBy('updated_at', 'DESC')->paginate(config('custom.paginate_4'));
         $albums = Album::all();
-        return view('admin.page.single', compact('artists', 'albums'));
-    }
+        $serial = 0;
 
-    public function getTypography()
-    {
-        return view('admin.page.typography');
+        return view('admin.page.single', compact('artists', 'albums', 'musics', 'serial'));
     }
 }
 

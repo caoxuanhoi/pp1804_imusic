@@ -15,5 +15,6 @@ return [
     'paginate_5' => 5,
     'paginate_8' => 8,
     'paginate_6' => 6,
+    'paginate_4' => 4,
     'path_image' => '/user_images/'
 ];

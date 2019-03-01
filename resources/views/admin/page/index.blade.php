@@ -84,12 +84,8 @@
                 @foreach($songs as $song)
                     <div class="col-md-3 content-grid">
                         @foreach($song->artists as $artist)
-                            <a class="popup-with-zoom-anim" href="{{ $song->path }}"><img src="{{ $artist->image }}"></a>
+                            <a class="button popup-with-zoom-anim" href="javascript:void(0)" id="music{{ $song->id }}" onclick="music({{ $song->id }})" data-url="{{ $song->path }}"><img src="{{ $artist->image }}">{{ $song->name }}</a>
                         @endforeach
-                        <a class="button popup-with-zoom-anim" href="javascript:void(0)" data-link="{{ $song->path }}">{{ $song->name }}</a>
-                        <audio controls="controls">
-                            <source src="{{ $song->path }}" type="audio/mp3" />
-                        </audio>
                     </div>
                 @endforeach
                 <div class="clearfix"> </div>
@@ -109,7 +105,7 @@
                                 @foreach($charts as $chart)
                                     <li class="jp-playlist-current">
                                         <div><a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a>
-                                        <a href="javascript:;" class="jp-playlist-item jp-playlist-current" tabindex="0">{{ $serial = $serial + 1 }}.{{ $chart->name }} 
+                                        <a id="musictab{{ $chart->id }}" onclick="musictab({{ $chart->id }})" data-url="{{ $chart->path }}" href="javascript:;" class="jp-playlist-item jp-playlist-current" tabindex="0">{{ $serial = $serial + 1 }}.{{ $chart->name }} 
                                             @foreach($chart->artists as $artist)
                                             <span class="jp-artist">{{ $artist->artist_name }}</span></a>
                                         </div>
@@ -145,16 +141,17 @@
             <div class="clearfix"> </div>
         </div>
         @foreach($artists as $artist)
-        <div class="col-md-3 content-grid">
-            <a class="image-artists" href="{{ route('single', $song->id)}} ">
-                <img src="{{ $artist->image }}" title="allbum-name">
-            </a>
-            <div>
-            <a class="button popup-with-zoom-anim" href="{{ route('single', $song->id)}} ">{{ $artist->artist_name }}</a>
+            <div class="col-md-3 content-grid">
+                <a class="image-artists" href="{{ route('single', $artist->id)}}">
+                    <img src="{{ $artist->image }}" title="{{ $artist->artist_name }}">
+                </a>
+                <div>
+                <a class="button popup-with-zoom-anim" href="{{ route('single', $artist->id)}} ">{{ $artist->artist_name }}</a>
+                </div>
             </div>
-        </div>
         @endforeach
         <div class="clearfix"> </div>
+        {{ $artists->links() }}
         
     </div>
 <div class="clearfix"></div>
