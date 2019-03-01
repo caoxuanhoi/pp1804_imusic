@@ -7,23 +7,7 @@
     <div class="music-browse">
         <!--albums-->
         <!-- pop-up-box --> 
-        <link href="source/css/popuo-box.css" rel="stylesheet" type="text/css" media="all">
-        <script src="source/js/jquery.magnific-popup.js" type="text/javascript"></script>
-        <script>
-            $(document).ready(function() {
-            $('.popup-with-zoom-anim').magnificPopup({
-                type: 'inline',
-                fixedContentPos: false,
-                fixedBgPos: true,
-                overflowY: 'auto',
-                closeBtnInside: true,
-                preloader: false,
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-zoom-in'
-            });
-            });
-        </script>		
+        <link href="source/css/popuo-box.css" rel="stylesheet" type="text/css" media="all">	
         <!--//pop-up-box -->
         <div class="browse">
             <div class="tittle-head two">

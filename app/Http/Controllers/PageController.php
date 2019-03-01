@@ -47,7 +47,7 @@ class pageController extends Controller
         return view('admin.page.radio', compact('songs', 'albums', 'artists'));
     }
 
-    public function getSingle()
+    public function getSingle($id)
     {
         $artists = Artist::all();
         $albums = Album::all();
